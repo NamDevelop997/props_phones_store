@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SanPham from './SanPham'
 
 export default class DanhSachSanPham extends Component {
 
@@ -18,16 +19,7 @@ export default class DanhSachSanPham extends Component {
         return this.mangSanPham.map((sanPham, index) => {
             return (
                 <div className="col-4" key={index}>
-                    <div className="card text-white text-dark text-center" style= {{border: 'none'}} >
-                        <img className="card-img-top" style={{ width: '150px', height: '150px', marginLeft: '90px'}} src={sanPham.hinhAnh} alt={sanPham.hinhAnh} />
-                        <div className="card-body">
-                            <h4 className="card-title">{sanPham.tenSP}</h4>
-                            <p className="card-text">{sanPham.giaBan.toLocaleString()}</p>
-                            <button className="btn btn-warning" onClick={() => {
-                                this.xemChiTiet(sanPham)
-                            }}>Thông tin chi tiết</button>
-                        </div>
-                    </div>
+                    <SanPham sanPhamProps ={sanPham} xemChiTiet = {this.xemChiTiet} />
 
                 </div>
             )
@@ -42,7 +34,7 @@ export default class DanhSachSanPham extends Component {
     render() {
         return (
             <div className="container">
-                <h3 className="text-center">Danh sách sản phẩm</h3>
+                <h3 className="text-center mb-5">Danh sách sản phẩm</h3>
                 <div className="row">
                     {this.renderSanPham()}
                 </div>
